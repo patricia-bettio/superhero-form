@@ -1,0 +1,15 @@
+{
+  "name": "2.forms_superhero",
+  "version": "1.0.0",
+  "description": "",
+  "main": "superhero_form.js",
+  "scripts": {
+    "start": "parcel *.html --open"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "parcel-bundler": "^1.12.4"
+  }
+}
