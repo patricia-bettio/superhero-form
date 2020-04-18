@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="superhero_form.css">
+    <title>Document</title>
+</head>
+<body>
+   <h1>Basic</h1> 
+<form action="form_basic_sent.html" method="post">
+
+    <div>
+    <label for="name">Name</label>
+    <input id="name" placeholder="Your name">
+    </div>
+    
+    <div>
+    <label for="email">E-mail</label>
+    <input type="email" id="email" placeholder="your@emailAdress.com">
+    </div>
+    
+    <div>
+    <label for="subject">Subject</label>
+    <select name="" id="subject">
+        <option value="">Issue</option>
+        <option value="">Help desk</option>
+        <option value="">Random</option>
+    </select>
+    </div>
+
+    <div>
+    <label for="message"></label>
+    <textarea id="message"></textarea>
+    </div>
+
+    <button type="submit">Send</button>
+
+</form>
+
+<h1>Types</h1>
+
+<form action="form_basic_sent.html" method="post">
+
+    <div><input type="color"></div>
+   
+    <div><input type="date"></div>
+    <div><input type="datetime-local"></div>
+    <div><input type="email"></div>
+    <div><input type="file"></div>
+    <div><input type="hidden"></div>
+    <div><input type="image"></div>
+    <div><input type="month"></div>
+    <div><input type="number" min="1" max="10"></div>
+    <div><input type="password"></div>
+    <div><input type="range"></div>
+    <div><input type="reset"></div>
+    <div><input type="search"></div>
+    <div><input type="tel"></div>
+    <div><input type="text"></div>
+    <div><input type="time"></div>
+    <div><input type="url"></div>
+    <div><input type="week"></div>
+
+</form>
+
+<h1>Checkboxes and radio buttons</h1>
+
+<form action="form_basic_sent.html" method="post">
+
+    <div>
+        <!--user should be able to select multiple checkboxes-->
+        <input id="drama" type="checkbox">
+        <label for="drama">Drama</label>
+
+        <input type="checkbox" id="comedy">
+        <label for="comedy">Comedy</label>
+
+        <input type="checkbox" id="thriller">
+        <label for="thriller">Thriller</label>
+    </div>
+
+
+    <div>
+        <!--by putting the same "name" on all input that are radio the user can only select one, which is the idea behind the radio buttons-->
+        <input type="radio" id="movie" name="type">
+        <label for="movie">Movie</label>
+
+        <input type="radio" id="series" name="type">
+        <label for="movie">Series</label>
+    </div>
+
+    <!--Fieldset: to group related fields together, it will work with div, but semantically it makes more sense to switch to fielset in some cases-->
+    <fieldset>
+        <!--Legend!-->
+        <legend>Do you agree to the terms of use?</legend>
+          <!--another example-->
+          <input type="radio" id="yes" name="pick">
+          <label for="yes">Yes</label>
+  
+          <input type="radio" id="no" name="pick">
+          <label for="no">No</label>
+    </fieldset>
+
+</form>
+
+</body>
+</html>
