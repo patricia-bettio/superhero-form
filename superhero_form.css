@@ -1,0 +1,34 @@
+/* Stack the boxes on top of each other */
+input {
+    display: block;
+}
+
+form input {
+    margin-bottom: 1.5rem;
+}
+
+
+input,
+select,
+textarea {
+    font-size: 1.25rem;
+    width: 15em;
+}
+
+textarea {
+    width: 15em;
+    height: 10em;
+}
+
+input:focus,
+textarea:focus {
+    background-color: whitesmoke;
+}
+
+button {
+    font-size: 1.5rem;
+    padding: 0.5em 0.75em;
+    border: 3px solid;
+    border-radius: 0px;
+    cursor: pointer;
+}

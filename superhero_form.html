@@ -7,102 +7,72 @@
     <title>Document</title>
 </head>
 <body>
-   <h1>Basic</h1> 
-<form action="form_basic_sent.html" method="post">
-
-    <div>
-    <label for="name">Name</label>
-    <input id="name" placeholder="Your name">
-    </div>
-    
-    <div>
-    <label for="email">E-mail</label>
-    <input type="email" id="email" placeholder="your@emailAdress.com">
-    </div>
-    
-    <div>
-    <label for="subject">Subject</label>
-    <select name="" id="subject">
-        <option value="">Issue</option>
-        <option value="">Help desk</option>
-        <option value="">Random</option>
-    </select>
-    </div>
-
-    <div>
-    <label for="message"></label>
-    <textarea id="message"></textarea>
-    </div>
-
-    <button type="submit">Send</button>
-
-</form>
-
-<h1>Types</h1>
-
-<form action="form_basic_sent.html" method="post">
-
-    <div><input type="color"></div>
    
-    <div><input type="date"></div>
-    <div><input type="datetime-local"></div>
-    <div><input type="email"></div>
-    <div><input type="file"></div>
-    <div><input type="hidden"></div>
-    <div><input type="image"></div>
-    <div><input type="month"></div>
-    <div><input type="number" min="1" max="10"></div>
-    <div><input type="password"></div>
-    <div><input type="range"></div>
-    <div><input type="reset"></div>
-    <div><input type="search"></div>
-    <div><input type="tel"></div>
-    <div><input type="text"></div>
-    <div><input type="time"></div>
-    <div><input type="url"></div>
-    <div><input type="week"></div>
+   <header>    <h1>SuperHero</h1> </header>
+<main>
 
-</form>
+<form>
 
-<h1>Checkboxes and radio buttons</h1>
+    <label for="real_name">Real Name
+        <input id="real_name" type="password" name="real_name" placeholder="Your real name">
+    </label>
+    
+    <label for="alias">Alias
+        <input id="alias" type="text" name="alias" placeholder="alias">
+    </label>
 
-<form action="form_basic_sent.html" method="post">
+    <label for="dob">Date of Birth
+        <input id="dob" type="date" name="dob">
+    </label>
 
-    <div>
-        <!--user should be able to select multiple checkboxes-->
-        <input id="drama" type="checkbox">
-        <label for="drama">Drama</label>
+    <label for="location">Location
+        <input id="location" type="text" name="location">
+    </label>
 
-        <input type="checkbox" id="comedy">
-        <label for="comedy">Comedy</label>
+    <label for="enemies">Enemies
+        <input id="enemies" type="number" min="1" max="10" name="enemies">
+    </label>
 
-        <input type="checkbox" id="thriller">
-        <label for="thriller">Thriller</label>
-    </div>
+    <label for="fav_color">Colors
+        <input type="color" name="fav_color">
+        <input type="color" name="fav_color">
+    </label>
+    
 
-
-    <div>
-        <!--by putting the same "name" on all input that are radio the user can only select one, which is the idea behind the radio buttons-->
-        <input type="radio" id="movie" name="type">
-        <label for="movie">Movie</label>
-
-        <input type="radio" id="series" name="type">
-        <label for="movie">Series</label>
-    </div>
-
-    <!--Fieldset: to group related fields together, it will work with div, but semantically it makes more sense to switch to fielset in some cases-->
     <fieldset>
-        <!--Legend!-->
-        <legend>Do you agree to the terms of use?</legend>
-          <!--another example-->
-          <input type="radio" id="yes" name="pick">
-          <label for="yes">Yes</label>
-  
-          <input type="radio" id="no" name="pick">
-          <label for="no">No</label>
+        <legend>Super powers</legend>
+
+        <ul>
+
+            <li>
+                <label> Fly
+                    <input type="checkbox" name="powers" value="Fly">
+                </label>
+            </li>
+
+            <li>
+                <label> Invisible
+                    <input type="checkbox" name="powers" value="Invisible">
+                </label>
+            </li>
+
+            <li>
+                <label> Force
+                    <input type="checkbox" name="powers" value="Force">
+                </label>
+            </li>
+
+        </ul>
+
     </fieldset>
 
+    <input type="submit" value="Save">
+
 </form>
+
+</main>
+
+<script src="superhero_form.js"></script>
 
 </body>
 </html>
