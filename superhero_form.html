@@ -72,7 +72,8 @@
 </form>
 
 <template>
-    <article class="superhero">
+    <!-- actually dont need the data-id here nor in the button, as it is being created via js -->
+    <article data-id>
         
         <p class="alias">also known as</p>
         <img src="" alt="" class="profilePic">
@@ -82,7 +83,7 @@
         <p class="powers">powers:</p>
         <ul></ul>
         <p class="colors">favorite colors</p>
-        <button class="removeIt">Delete</button>
+        <button data-action="delete" data-id>Delete</button>
     </article>
 </template>
 
