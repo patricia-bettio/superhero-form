@@ -51,3 +51,7 @@ display: none;
 input.invalid + p {
     display: block;
 }
+
+.hidden {
+    display: none;
+}
