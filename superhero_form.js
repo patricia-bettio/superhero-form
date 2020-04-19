@@ -1,6 +1,13 @@
 import {endpoint, apiKey} from "./modules/settings";
 
+window.addEventListener("load", init);
 
+function init(){
+    setUpForm();
+    getSuperHeroes();
+}
+
+function setUpForm(){ 
 const form = document.querySelector("form");
 //make some things part of the global scope so that I can access them from the console, when dealing with parcel: ***to debug in the console
 window.form = form;
@@ -81,8 +88,9 @@ form.addEventListener("submit", (e) => {
         location: form.elements.location.value,
         enemies: form.elements.enemies.value,
         //fav_color: form.elements.fav_color.value,
-        powers: [] //fix
+        powers: checkedBox.map((el)=>el.value),
     });
+    form.reset();
     } else {
         //if there is an error, we go through them
         formElements.forEach((oneElement) => {
@@ -94,6 +102,8 @@ form.addEventListener("submit", (e) => {
 
         }
     });
+
+}
 
 function postSuperHero(newSuperHeroData){
         const postData = JSON.stringify(newSuperHeroData);
@@ -107,5 +117,41 @@ function postSuperHero(newSuperHeroData){
   body: postData,
 })
   .then((res) => res.json())
-  .then((data) => console.log(data));
+  .then((data) => {
+      console.log(data);
+      showSuperHeroes(data);
+  });
 };
+
+function getSuperHeroes(){
+   
+    fetch(endpoint + "rest/superheroes", {
+    method: "get",
+    headers: {
+    "accept": "application/json",
+    "x-apikey": apiKey,
+    "cache-control": "no-cache",
+}
+})
+.then((res) => res.json())
+.then((data) => data.forEach(showSuperHeroes));
+};
+
+const template = document.querySelector("template").content;
+const heroArea = document.querySelector("#heroeslist");
+function showSuperHeroes(oneHero){
+    const clone = template.cloneNode(true);
+    clone.querySelector("p.alias").textContent = oneHero.alias;
+    clone.querySelector("p.fullName").textContent = oneHero.real_name;
+
+    const ul = clone.querySelector("ul");
+    oneHero.powers.forEach(pow=>{
+        const li = document.createElement("li");
+        li.textContent = pow;
+        ul.appendChild(li);
+    })
+
+    heroArea.appendChild(clone);
+
+
+}
