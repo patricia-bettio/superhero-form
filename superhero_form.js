@@ -96,8 +96,9 @@ form.addEventListener("submit", (e) => {
         }
     });
 
-function postSuperHero(payload){
-        const postData = JSON.stringify(payload);
+function postSuperHero(newHeroData){
+        const postData = JSON.stringify(newHeroData);
+        console.log(postData)
         fetch(endpoint, {
         method: "post",
         headers: {
