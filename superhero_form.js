@@ -1,7 +1,6 @@
 import {endpoint, apiKey} from "./modules/settings";
 
 
-
 const form = document.querySelector("form");
 //make some things part of the global scope so that I can access them from the console, when dealing with parcel: ***to debug in the console
 window.form = form;
@@ -96,10 +95,9 @@ form.addEventListener("submit", (e) => {
         }
     });
 
-function postSuperHero(newHeroData){
-        const postData = JSON.stringify(newHeroData);
-        console.log(postData)
-        fetch(endpoint, {
+function postSuperHero(newSuperHeroData){
+        const postData = JSON.stringify(newSuperHeroData);
+        fetch(endpoint + "rest/superheroes", {
         method: "post",
         headers: {
         "Content-Type": "application/json; charset=utf-8",
@@ -108,6 +106,6 @@ function postSuperHero(newHeroData){
   },
   body: postData,
 })
-  .then(res => res.json())
-  .then(data => console.log(data));
+  .then((res) => res.json())
+  .then((data) => console.log(data));
 };
