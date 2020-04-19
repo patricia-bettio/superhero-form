@@ -4,7 +4,8 @@
   "description": "",
   "main": "superhero_form.js",
   "scripts": {
-    "start": "parcel *.html --open"
+    "start": "parcel *.html --open",
+    "build": "parcel build *.html --public-url ./"
   },
   "keywords": [],
   "author": "",

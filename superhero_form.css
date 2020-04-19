@@ -1,5 +1,8 @@
 /* Stack the boxes on top of each other */
-input {
+input,
+textarea,
+select,
+label {
     display: block;
 }
 
@@ -7,6 +10,9 @@ form input {
     margin-bottom: 1.5rem;
 }
 
+label {
+    cursor: pointer;
+}
 
 input,
 select,
@@ -31,4 +37,17 @@ button {
     border: 3px solid;
     border-radius: 0px;
     cursor: pointer;
+}
+
+.invalid {
+    border: 2px solid red;
+}
+
+/* every input followed by a p */
+input + p{
+display: none;
+}
+
+input.invalid + p {
+    display: block;
 }

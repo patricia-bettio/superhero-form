@@ -13,31 +13,31 @@
 
 <form>
 
-    <label for="real_name">Real Name
-        <input id="real_name" type="password" name="real_name" placeholder="Your real name">
-    </label>
+    <label>Real Name</label>
+        <input type="text" name="real_name" required>
+        <p>Fill out the full name</p>
+   
     
-    <label for="alias">Alias
-        <input id="alias" type="text" name="alias" placeholder="alias">
-    </label>
-
-    <label for="dob">Date of Birth
-        <input id="dob" type="date" name="dob">
-    </label>
-
-    <label for="location">Location
-        <input id="location" type="text" name="location">
-    </label>
-
-    <label for="enemies">Enemies
-        <input id="enemies" type="number" min="1" max="10" name="enemies">
-    </label>
-
-    <label for="fav_color">Colors
-        <input type="color" name="fav_color">
-        <input type="color" name="fav_color">
-    </label>
+    <label>Alias</label>
+        <input type="text" name="alias" required>
+        <p>Fill out the Hero name</p>
     
+
+    <label>Date of Birth</label>
+        <input type="date" name="dob" required>
+
+    <label>Unknown</label>
+        <input type="checkbox" name="unknown" required>
+
+    <label>Location</label>
+        <input type="text" name="location" required>
+
+    <label>Enemies</label>
+        <input type="number" min="1" max="10" value="0" name="enemies">
+ 
+
+    <label>Colors</label>
+        <input type="color" name="fav_color" required>    
 
     <fieldset>
         <legend>Super powers</legend>
