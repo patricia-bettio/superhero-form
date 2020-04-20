@@ -11,7 +11,7 @@
    <header>    <h1>SuperHero</h1> </header>
 <main>
 
-<form>
+<form data-state="post">
 
     <label>Real Name</label>
         <input type="text" name="real_name" required>
@@ -63,6 +63,41 @@
                 </label>
             </li>
 
+            <li>
+                <label> Laser Sight
+                    <input type="checkbox" name="powers" value="Laser Sight">
+                </label>
+            </li>
+
+            <li>
+                <label> Hight-tech
+                    <input type="checkbox" name="powers" value="Hight-tech">
+                </label>
+            </li>
+
+            <li>
+                <label> Martial arts master
+                    <input type="checkbox" name="powers" value="Martial arts master">
+                </label>
+            </li>
+
+            <li>
+                <label> Wall-crawling
+                    <input type="checkbox" name="powers" value="Wall-crawling">
+                </label>
+            </li>
+
+            <li>
+                <label> Spider-sense
+                    <input type="checkbox" name="powers" value="Spider-sense">
+                </label>
+            </li>
+
+            <li>
+                <label> Reflexes
+                    <input type="checkbox" name="powers" value="Reflexes">
+                </label>
+            </li>
         </ul>
 
     </fieldset>
@@ -79,11 +114,13 @@
         <img src="" alt="" class="profilePic">
         <p class="fullName">name <span></span></p>
         <p class="birthday">birthday</p>
+        <p class="enemies">enemies</p>
         <p class="location">location</p>
         <p class="powers">powers:</p>
         <ul></ul>
         <p class="colors">favorite colors</p>
-        <button data-action="delete" data-id>Delete</button>
+        <button data-action="delete" class="deleteButton" data-id>Delete</button>
+        <button data-action="edit" class="editButton" data-id>Edit</button>
     </article>
 </template>
 
