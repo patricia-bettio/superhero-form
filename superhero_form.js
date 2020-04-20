@@ -79,8 +79,24 @@ form.addEventListener("submit", (e) => {
     }
     //1.all input validate
     if (form.checkValidity() && validForm) {
-        //send to api
-    postSuperHero({
+        //make the form work for editing
+        if(form.dataset.state === "post"){
+
+//send to api
+postSuperHero({
+    //creating an object to pass along with that function all the data,
+    real_name: form.elements.real_name.value,
+    alias: form.elements.alias.value,
+    dob: form.elements.dob.value, //fix
+    location: form.elements.location.value,
+    enemies: form.elements.enemies.value,
+    //fav_color: form.elements.fav_color.value,
+    powers: checkedBox.map((el)=>el.value),
+});
+
+} else {
+    //send to api
+    putSuperHero({
         //creating an object to pass along with that function all the data,
         real_name: form.elements.real_name.value,
         alias: form.elements.alias.value,
@@ -89,7 +105,10 @@ form.addEventListener("submit", (e) => {
         enemies: form.elements.enemies.value,
         //fav_color: form.elements.fav_color.value,
         powers: checkedBox.map((el)=>el.value),
-    });
+        //next, pass the id as a second argument (not part of the object)
+    }, form.dataset.id);
+}
+        
     form.reset();
     } else {
         //if there is an error, we go through them
@@ -123,6 +142,27 @@ function postSuperHero(newSuperHeroData){
   });
 };
 
+
+function putSuperHero(newSuperHeroData, id){
+    const postData = JSON.stringify(newSuperHeroData);
+    fetch(endpoint + "rest/superheroes/" + id, {
+    method: "put",
+    headers: {
+    "Content-Type": "application/json; charset=utf-8",
+    "x-apikey": apiKey,
+    "cache-control": "no-cache",
+},
+body: postData,
+})
+.then((res) => res.json())
+.then((data) => {
+  console.log(data);
+  //showSuperHeroes(data);
+});
+};
+
+
+
 function getSuperHeroes(){
    
     fetch(endpoint + "rest/superheroes", {
@@ -144,8 +184,12 @@ function showSuperHeroes(oneHero){
     const clone = template.cloneNode(true);
     clone.querySelector("p.alias").textContent = oneHero.alias;
     clone.querySelector("p.fullName").textContent = oneHero.real_name;
+    clone.querySelector("p.birthday").textContent = oneHero.dob;
+    clone.querySelector("p.location").textContent = oneHero.location;
+    clone.querySelector("p.enemies").textContent = oneHero.enemies;
     //action on the delete button
     clone.querySelector(`[data-action="delete"]`).addEventListener("click", (e) => deleteSuperHero(oneHero._id));
+    clone.querySelector(`[data-action="edit"]`).addEventListener("click", (e) => editPrepareSuperHero(oneHero._id, setUpFormForEdit));
     clone.querySelectorAll(`article, button[data-action="delete"]`).forEach(el=>el.dataset.id=oneHero._id);
     //powers list
     const ul = clone.querySelector("ul");
@@ -172,4 +216,46 @@ function deleteSuperHero(id){
     .then((data) => {});
     //2.remove from dom
     document.querySelector(`article[data-id="${id}"]`).remove();
+}
+
+function editPrepareSuperHero(id, callback){
+    //fetch data using the id
+    fetch(endpoint + "rest/superheroes/" + id, {
+        method: "get",
+        headers: {
+        "accept": "application/json",
+        "x-apikey": apiKey,
+        "cache-control": "no-cache",
+    }
+    })
+    .then((res) => res.json())
+    .then((data) => callback(data));
+  
+}
+
+function setUpFormForEdit(data){
+    //console.log("hi there")
+    
+    //populate form
+    const form = document.querySelector("form");
+    //dataset edit both ways - to reuse the form function
+    form.dataset.state = "edit";
+    //give it an id so that we can use in putsuperero function
+    form.dataset.id = data._id;
+    //clear the form before so that next edit button action populates info from scratch
+    form.reset();
+    
+    //populate form
+    form.elements.real_name.value = data.real_name;
+    form.elements.alias.value = data.alias;
+    form.elements.dob.value = data.dob;
+    form.elements.location.value = data.location
+    form.elements.enemies.value = data.enemies;
+    //powers
+    data.powers.forEach((power)=>{
+        document.querySelector(`[value="${power}"]`).checked = true;
+    })
+    
+    //handle submits
+    //remove event handler nd add event handler
 }
